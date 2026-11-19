@@ -1,67 +1,53 @@
-# DeepSeek Harness — technical S3* C-constructor sufficiency review
+# DeepSeek Harness — technical constructor-sufficiency analysis
 
-**Target transition:** NO_QUALIFIED_C_TARGET
-**Proposal-stage decision:** NO_GO
-**Research disposition:** NO_USEFUL_CHANGE
+**Target transition:** S3*=— -> S3*=C
+**Proposal-stage decision:** GO
+**Research disposition:** NEEDS_EVIDENCE
 
-**Human decision:** [issue.md](issue.md). **Canonical technical/status receipt:** [roadmap.md](roadmap.md). This AI contract is a proposal-stage source-evidence analysis, not a new Index assessment or native implementation.
+**Human draft:** [issue.md](issue.md). **Canonical receipt:** [roadmap.md](roadmap.md).
+**Scope:** narrow research GO for an **opt-in pre-commit GoalService guard port**; real S3*=C remains unproven until an independent configured actor plus feedback works under native runtime tests.
 
-## 1. Boundary and actual function-specific source
+## Source and six-function coverage
 
-Original source: https://github.com/deepseek-ai/deepseek-harness/commit/2e39e70496aa02986ca6a820c5d497e816b69d7e. Historical included Index assessment, review ref, accepted vector and six-function outcomes are exclusively pinned in [roadmap.md](roadmap.md). One supported harness organization includes its Agent/Session and opt-in Team, Goal, experimental Ralph/Auto Review; not external maintainers, user policy or a reviewer outside its composed runtime.
+Original master pinned: https://github.com/deepseek-ai/deepseek-harness/commit/2e39e70496aa02986ca6a820c5d497e816b69d7e. Historical Index ownership S1=A / S2=A / S3=A(P) / S3*=— / S4=— / S5=— is recorded in the Human's six-function table and [canonical Index record](https://github.com/opensiro/vsm-harness-index/blob/c2e43bf4750841277b3e58d8ba80314121734764/assessments/de/deepseek-harness.md). The source-first evaluation covered AgentLoop/Session, Team/board, Goal service/tool/driver, Ralph, Auto Review, Cordis composition and parent constraints. Do not treat absent historical cells as defects.
 
-- S1 existing closure: [AgentLoop](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/core/agent-loop/README.md) binds model tool action and subsequent Session feedback.
-- S2 existing closure: [Teams](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/team/agent-team/README.md) regulate mutual work via board, dependencies, CAS and messages.
-- S3 existing closure: Team Lead and authorised parent Task Board manage assignments and current commitments.
-- S3* candidate: independent review after a claimed Goal/Ralph completion; current Goal and Ralph own self-declared terminal status only.
-- S4 negative: no evidenced specific future-environment adaptation need; plugin availability is not an autonomous future-return actor.
-- S5 negative: user and deployment control remain legitimate parent/governance boundaries, not automatically installable local policy.
+- S1 already drives work through agent tool events and feedback.
+- S2 Team task dependencies/CAS coordinate competing work.
+- S3 Lead/parent control manages live goals and assignments.
+- **S3*** currently lacks a first-party protected, independent goal-completion certification port; [GoalService](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts) persists `goal/change` and only then emits `goal/changed`.
+- S4 no evidenced future-environment prediction/adaptation owner; no target.
+- S5 user/deployment policy remains with lawful parent; no invented agent authority.
 
-**Function witness only if later substantiated:** independent actor reads evidence from a different channel than worker summary, uses legitimate certify/reject/hold alternatives, enforces any certified label and returns information that changes later authorised work. A mere audit message or code review UI does not establish it.
+## Track A and concrete counterfactual
 
-## 2. Track A — source-native mechanisms and cheapest alternative
+**Actual operator demand:** in [Discussion #10471](https://github.com/deepseek-ai/deepseek-harness/discussions/10471) a user reports repeated model-authorised `update_goal complete`, requiring creation of several goals for the same work, and specifically proposes `propose_complete` plus independent evidence verification. This is a first-party-hosted **user report**, not a reproduced production defect or maintainer acceptance.
 
-| Native surface | What it actually enforces | What it does not prove |
-| --- | --- | --- |
-| [Goal service](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts) | GoalRef CAS, persisted goal/change, complete/block state transitions, goal/changed notice | Independent reviewer consent before completion |
-| [Goal tools](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/tool-goal/src/index.ts) | Model update_goal routes complete/blocked to Goal service under existing tool authority | Evidence-independent verifier judgment |
-| [Goal-round driver](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal-round-driver/src/index.ts) | Bounded continuation, cancellation, stale reservation checks and source feedback | Review/certification of goal completion |
-| [Ralph](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/tool-ralph/README.md) | Fresh child rounds, structured self-report and cap | Outcome evidence not chosen by the worker |
-| [Auto Review](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/auto-review/README.md) | Separate model review of pending tool effects before execution | Post-result independent validation |
-| [Cordis composition](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/docs/architecture.md) | User-selected services/events/plugins and profile overlays | Permission to mutate goal as a separate bounded S3* owner |
+**Current native:** `GoalService.complete()` delegates to `transition(... 'complete' ...)`. `commitSnapshot()` builds the change and `commit()` calls `agent.session.append('goal/change', change)` before emitting `goal/changed`. Goal id/revision, tool authority, goal-round feedback and ordinary acceptance checks exist, but are not an independent goal certification boundary.
 
-The source-visible GoalService.complete() appends goal/change and then emits goal/changed (same [source](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts)). The model-facing [tool code](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/tool-goal/src/index.ts) calls complete directly after completionAuthority permits goal-round completion. Therefore a passive subscriber to goal/changed cannot reliably reject the worker's false success **before it becomes durable**. Revision guards alone do not certify factual task success; an authorised plugin or parent can already use task-specific tests without another core component.
+**A0:** manual acceptance and task-specific CI/tests can reject bad deliverables, at least after worker self-report; low-cost alternative.
 
-Original PR inventory: targeted search returned no matching first-party evaluator, but the direct original open PR list returned HTTP 404, so comprehensive overlap status remains **UNKNOWN**. Original [CONTRIBUTING](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/CONTRIBUTING.md) currently rejects external PR submissions. No maintainer feature mandate is inferred.
+**A1 concrete external construction:** [bpc-oss/dsh-verification](https://github.com/bpc-oss/dsh-verification) implements an optional evidence/permit verifier with source-visible [vendor patch](https://github.com/bpc-oss/dsh-verification/blob/main/scripts/patch-vendored-goal.cjs) injecting `registerTransitionGuard` and pre-commit synchronous dispatch and `permitRef` into `@deepseek-ai/dsh-goal`. Its [seam-e2e tests](https://github.com/bpc-oss/dsh-verification/blob/main/packages/dsh-verification/test/seam-e2e.test.ts) claim direct `ctx.goals.complete` without permit is rejected without mutation, and verify enable/disable/stale/permit attribution paths. These tests were **read, not run**; package last pushed August 2026, and compatibility with frozen original November HEAD is **UNKNOWN**. The plugin's default advisory path is not an enforce path; npm publication is not established. This implementation is a counterfactual **proof of practical seam pressure**, not proof a new baked-in verifier is needed.
 
-## 3. Independent Track B alternatives and C sufficiency
+**PRs and original issue tracking:** [repo metadata](https://api.github.com/repos/deepseek-ai/deepseek-harness) explicitly reports `has_pull_requests=false` and `has_issues=false`, while Discussions are enabled. [GitHub PR page](https://github.com/deepseek-ai/deepseek-harness/pulls) restricts creation and currently reports 0 open and 0 closed; REST pull endpoints return 404. Thus native PR bodies/diffs are not available for exhaustive overlap, not evidence of a hidden accepted verifier. Discussion #8736 is a task-notify plugin discussion (not a PR). Original [contributor policy](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/CONTRIBUTING.md) prioritises independent plugins and explicitly declines PRs.
 
-| Option | Mechanism and actual owner | Return-to-operation question | Evaluation |
-| --- | --- | --- | --- |
-| A0 task tests / parent accept | Explicit deterministic test command or human checks the artifact after worker reports | Parent/user can decide whether to continue; not an in-runtime C actor | Lowest integration cost; no demonstrated failure |
-| A1 opt-in out-of-tree plugin | Separate Cordis reviewer reads independent evidence, publishes its own verdict; parent owns any task correction | Can it legally prevent inaccurate certification or merely add a warning? | Preferred experiment if a real case appears; source hooks exist, enforcement remains unproven |
-| B1 smallest new first-party S3* port | Define completion/certification interface only if non-core path cannot achieve a required protected decision; evaluator composed from developer policy, evidence and owner | Guard completion before durable success, reject stale/parent-forbidden decisions, append return evidence, influence next authorised goal round | Coherent hypothesis, but **not qualified or implemented** |
-| B2 standalone controller | Duplicate Goal store and policy authority to control worker completion | Changes parent policy and competition with native state | Overbuilt, no independent justification |
+## Minimum Track B on-top component
 
-For B1 a **complete hypothetical constructor** requires: (a) independent provenance of objective/worker claim and external artifact/test evidence, (b) separately selected reviewer with explicit lawful authority to certify/hold/reject, (c) a protected point that prevents falsely claiming certified completion or provides distinct status without rewriting the worker's result, (d) durable audit record tied to exact Goal id/revision and review evidence, and (e) authorised later goal work or escalation with observable return. An exposed hook with no independent decision owner or one-way warning is **insufficient**. These are logical obligations; the number of physical native APIs is not prescribed. Existing native code could cover all but one edge, if a real counterexample proved it.
+**P0 = GoalTransitionGuard extension seam**, not a new mandatory reviewer package. Add a registered plugin-visible synchronous veto on `complete` **before** the session's durable `goal/change` append; check current goal id/revision, never accept stale receipts, and permit scoped observer identity. Optional goal-change `permitRef` attribution must be schema-aware with compatible replay/projection and no unexplained authority escalation. The separate plugin can already supply evidence capture and reviewer decision; goal service only supplies the protected boundary.
 
-**Counterfactual owner test:** remove the reviewer but keep Goal service, checks, CAS and events. Worker completion and task tests still work; no independent model audit actor makes a decision *inside the harness*. But absence of that C function alone is not evidence the user needs a first-party implementation. External test/human/sidecar alternatives must first be shown insufficient for the exact task.
+**S3* proof obligations for the composed system:** (i) evidence independent of worker self-report, (ii) distinct lawful reviewer decision `certify/reject/hold`, (iii) enforcement before state change, (iv) verifiable audit/ref, (v) authorised corrective work following a rejected claim. A hook alone cannot be graded C. Parent pause/stop and release gate must win. Non-enforce/advisory mode must remain backwards-compatible.
 
-**Reason for current NO_GO:** actual task failure and distinct positive user result have not been demonstrated; the original documents deliberate evaluator deferral; full original-native PR-list coverage was unavailable; a protected completion port's lawful owner and effect have not been proven necessary. This is not a blanket judgment that independent verification is useless, and a source-backed intentional omission of all future auditing is **not** claimed.
+**Falsifier:** show an unpatched original Cordis plugin alone can veto *all* direct completion paths at matching revision, or that the vendored plugin plus ordinary tests has equal effect at lower maintenance cost, or no user value in controlled reproduction. In any of those cases revert to NO_GO for the native seam. Conversely, denial on `tools/pre-execute` only might miss an internal direct `ctx.goals.complete` caller; do not confuse tool gate with complete authority.
 
-## 4. Falsifiable future validation, and decision boundaries
+## Source-backed test / cost plan
 
-Native commands advertised in original [AGENTS.md](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/AGENTS.md): pnpm run test, pnpm run typecheck, pnpm run build; actual supported developer workflow requires installed dependencies and model credentials for real-API tests. **None run** in this plan-only review. Proposed disposable fixtures/test cases:
+1. Pin original `2e39e70496aa02986ca6a820c5d497e816b69d7e` and plugin version separately. Reproduce direct GoalService completion without verifier, with (a) insufficient evidence and (b) independently accepted objective.
+2. Run the external vendor-patched A1 on matching original source, then implement a disposable optional native port B1 without vendor patch. Exercise `goal/change` log sequence under no-guard/advisory/enforce modes.
+3. Inject stale `revision`, absent reviewer, forged/stale permitRef, plugin rejection/throw, parent pause, restart/replay, concurrent guard install/remove. Confirm no false permitted completion and that permitted cases are exactly attributed.
+4. Verify denials become actionable feedback and the active goal continues only through authorised owner action; explicit true positive succeeds. Compare to A0 acceptance and A1 vendoring.
+5. Record source test logs, timestamps, runtime/failure/maintenance cost; if a simple route matches B1, reject B1.
 
-1. Worker reports complete on a task with an externally failing acceptance artifact; reviewer cannot certify and a properly authorised next round receives a corrective input.
-2. Worker reports complete when independent artifact/test passes; distinct reviewer is permitted to certify, and the decision is recorded separately.
-3. Reviewer is missing, unavailable, shares only worker-provided evidence, or has stale Goal id/revision; no invented independent certification or unauthorised goal mutation occurs.
-4. Parent/user pauses or revokes right: reviewer cannot override control; attempt fails closed with an attributable result.
-5. Reviewer disabled: ordinary Goal and Ralph modes continue with accurately labelled self-reported completion.
-6. Matched cost/outcome comparison vs deterministic tests, human review and A1 plugin; if either matches correction with less implementation/maintenance burden, stop first-party B1.
+**Current state:** no original native tests were run, external prototype's assertions were not independently reproduced, no actual cost measured, maintainer approval absent. Current result is source-grounded **GO / NEEDS_EVIDENCE**, not accepted or shipped C.
 
-**Positive result needed for reconsideration:** real false-success reproducer, unmatched verified outcome through B1, actual independent actor/authority/feedback closure, and tests showing A0/A1 insufficient. **Negative falsifier:** simple tests or supported external plugin produce the same effect, or required first-party hook cannot be made lawful. No real false-success run, benchmark, cost estimate or test result was produced.
+## Historical comparison
 
-## 5. Decision and post-verdict historical comparison
-
-Canonical P0 remains NO_QUALIFIED_C_TARGET; conditional P1 evidence and simpler option comparator; P2 NONE. Source-first independent decision: scoped **NO_GO / NO_USEFUL_CHANGE**. The old [pre-rerun case](https://github.com/opensiro-contributions/deepseek-harness/blob/37cbf1f044059dfca9e61d0f7c2c8f0ef5222851/.opensiro/issues/independent-goal-verification-20261119/roadmap.md) was read only after this result and agreed on NO_GO; the new technical observation adds the current direct-complete/post-notice authority limitation. No Index regrade, external Issue or PR, fork public Issue or product implementation. Upstream [#58](https://github.com/opensiro/upstream/issues/58) owner state ACTIVE/ALLOW permits only this internal case update. AI-assisted, no independent human test.
+[Previous independent v0.18 case]([previous reconciled decision](https://github.com/opensiro-contributions/deepseek-harness/blob/39bc69e4149528ab89deb60a6ed03f81739b0178/.opensiro/issues/independent-goal-verification-20261119/roadmap.md)) concluded NO_GO/NO_USEFUL_CHANGE under the evidence then known. This follow-up found a direct actual user report and a working-repository *claim* with source-level patch/tests. Revision to GO is attributed to **newly retrieved external evidence after the original independent pass**, not a second fresh-chat assessment or evidence of downstream Index promotion. No outward publication.

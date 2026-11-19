@@ -1,51 +1,65 @@
-# DeepSeek Harness — independently verified goal completion? (OpenSiro internal roadmap)
+# DeepSeek Harness — protected goal-completion verification (OpenSiro internal issue draft)
 
-**PLAN_ONLY · scoped NO_GO · research NO_USEFUL_CHANGE · DRAFT — NOT PUBLISHED**
+**PLAN_ONLY · scoped GO · research NEEDS_EVIDENCE · DRAFT — NOT PUBLISHED**
 
-**Target transition:** NO_QUALIFIED_C_TARGET
-**Proposal-stage decision:** NO_GO
-**Research disposition:** NO_USEFUL_CHANGE
+**Target transition:** S3*=— -> S3*=C
+**Proposal-stage decision:** GO
+**Research disposition:** NEEDS_EVIDENCE
 
-**Canonical decision receipt:** [roadmap.md](roadmap.md), source of truth for Index pins, six-function dispositions and all status fields.
-**Technical review:** [constructor-sufficiency.md](constructor-sufficiency.md).
-**Original:** https://github.com/deepseek-ai/deepseek-harness · pinned master commit 2e39e70496aa02986ca6a820c5d497e816b69d7e.
-**Working fork:** https://github.com/opensiro-contributions/deepseek-harness, metadata-only opensiro/meta.
+**Canonical evidence and status:** [roadmap.md](roadmap.md).
+**Technical construction analysis:** [constructor-sufficiency.md](constructor-sufficiency.md).
+**Original source:** https://github.com/deepseek-ai/deepseek-harness/commit/2e39e70496aa02986ca6a820c5d497e816b69d7e.
+**Current user/problem evidence:** https://github.com/deepseek-ai/deepseek-harness/discussions/10471.
+**Independent proof-of-concept alternative:** https://github.com/bpc-oss/dsh-verification.
 
-## Decision in one paragraph
+## Decision
 
-DeepSeek Harness lets a model declare a durable Goal complete and also has Ralph workers that self-report completion. Its own documentation explicitly defers independent evaluator certification. We independently tested this architecture hypothesis against the first-party code and the cheapest alternatives, **not by running native tasks**. There is no reproduced wrong-completion case or established additional user benefit requiring a new first-party constructed S3* owner over explicit test checks, a human review or an opt-in Cordis plugin. Therefore **NO_GO** to this specific new first-party implementation at present; this says nothing adverse about the harness as a whole.
+**GO is limited to investigating an optional, original-native GoalService pre-commit completion-guard seam**, allowing a distinct opt-in reviewer plugin to block unsupported `complete`, persist an attributable permit and return a usable rejection to the active goal workflow. The original service's [complete path](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts) records `goal/change` before `goal/changed`, so a passive observer cannot veto durable completion. A separate developer plugin already implements the reviewer via a [vendored native patch](https://github.com/bpc-oss/dsh-verification/blob/main/scripts/patch-vendored-goal.cjs); this shows the proposed seam is technically meaningful, but is **not evidence of compatibility or advantage on current original HEAD**.
+
+A [user Discussion #10471](https://github.com/deepseek-ai/deepseek-harness/discussions/10471) describes two model-declared complete events that ended continuation too early and forced repeated `/goal` setup. This is **third-party user testimony, not an OpenSiro reproduced test**. No user outcome improvement, native test or runtime benchmark has been measured. The original first-party [CONTRIBUTING.md](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/CONTRIBUTING.md) disallows outside PRs and directs users to Discussions/plugins.
 
 ## Accepted historical VSM starting point
 
-Accepted Index [DeepSeek Harness assessment](https://github.com/opensiro/vsm-harness-index/blob/c2e43bf4750841277b3e58d8ba80314121734764/assessments/de/deepseek-harness.md) at Index commit c2e43bf4750841277b3e58d8ba80314121734764, assessment blob 257a55619d474d8a86a49de6dffa93a4426d7b62, review source ddefc45fbc7f8e46dd73185e68295696d1297887, reviewed 2026-09-18, Profile 0.2.2 / Methodology 0.3.1. **These are historical ownership states, not current code grades or quality scores.** A = autonomous agent owns decisive closure; C = developer-composable autonomous decision constructor; P = supported parent owner; — = no material accepted function at the assessed boundary.
+Included [canonical Index assessment](https://github.com/opensiro/vsm-harness-index/blob/c2e43bf4750841277b3e58d8ba80314121734764/assessments/de/deepseek-harness.md), frozen assessment blob `257a55619d474d8a86a49de6dffa93a4426d7b62`, review ref `ddefc45fbc7f8e46dd73185e68295696d1297887`, reviewed 2026-09-18, Profile 0.2.2 / Methodology 0.3.1. This is a historical ownership vector, **not** a new grade or capability score.
 
-| Function / human meaning | Historical Index state | Source-backed current boundary / owner | Candidate / disposition |
+| Function | Historical state | Current observed owner / design | Decision |
 | --- | --- | --- | --- |
-| **S1 · Operations** | A | [AgentLoop](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/core/agent-loop/README.md): model selects tools and uses subsequent Session results | NO_TARGET: already agent-operated |
-| **S2 · Coordination** | A | [Team service](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/team/agent-team/README.md): members share task state, dependencies, CAS and messages | NO_TARGET: functioning optional Team mode |
-| **S3 · Current management** | A(P) | Team Lead and parent board govern current assignments and working commitments | NO_TARGET: no evidenced new manager need |
-| **S3* · Independent audit** | — | Goal and Ralph completion by same caller/worker; Auto Review only per-tool pre-execution authorization | Candidate evaluated; **NO_GO** for new first-party constructor now |
-| **S4 · Future adaptation** | — | Plugins and profile selection are deployment options, no evidenced autonomous future feedback actor | NO_TARGET: no specific prospective task |
-| **S5 · Identity / policy** | — | User/deployment permissions and reserved parent authority outside claimed local S5 owner | NO_TARGET: do not invent local ultimate policy |
+| **S1 · Operations** | A | AgentLoop and session own tool execution and feedback | Existing; no added C target |
+| **S2 · Coordination** | A | Opt-in Teams task board, CAS, dependencies and messages | Existing; no added C target |
+| **S3 · Management** | A(P) | Team Lead and parent task-board controls allocate and regulate active work | Existing; no added C target |
+| **S3* · Independent audit** | — | Goal / Ralph completion is model/worker asserted; Auto Review is pre-tool approval, not final-goal certification | **Eligible proposal**: `S3*=— -> S3*=C` with explicit composed reviewer and protected completion |
+| **S4 · Future adaptation** | — | Extensible profiles/plugins, but no independently evidenced prospective decision actor | No S4 target |
+| **S5 · Policy/identity** | — | User/deployer owns authority; no warranted S5 reallocation | No S5 target |
 
-Product system in focus: first-party Agent/Session with published opt-in Team, Goal, Ralph and Auto Review modes. Maintainer workflows, external evaluators, original CI and model provider are outside this organizational decision boundary.
+## Track A — shipped behavior and simpler alternatives
 
-## What exists and what is actually missing
+- First-party [GoalService.complete](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts) enforces current goal revision/phase but has no registered independent pre-commit verifier. It appends `goal/change` before notifying subscribers, so the listener cannot roll back a false completion.
+- First-party Goal tool and goal-round driver provide model-owned `complete` and continuation. Ralph terminal state is worker-reported, and Auto Review evaluates pending tools rather than actual final acceptance.
+- **A0 cheapest:** task-specific test/CI receipt or human parent acceptance *outside* the goal state. This may be entirely sufficient for some operators.
+- **A1 opt-in existing plugin:** [bpc-oss/dsh-verification](https://github.com/bpc-oss/dsh-verification) states advisory/enforce modes, provenance-bound evidence, a separate decision gate, and [real GoalService seam tests](https://github.com/bpc-oss/dsh-verification/blob/main/packages/dsh-verification/test/seam-e2e.test.ts); its enforce path **requires a vendor-patched GoalService** via [patch script](https://github.com/bpc-oss/dsh-verification/blob/main/scripts/patch-vendored-goal.cjs). The reported tests and benchmarks are third-party claims not run here.
+- **Original PR feature disabled:** [public repo metadata](https://api.github.com/repos/deepseek-ai/deepseek-harness) has `has_pull_requests=false`, [PR tab](https://github.com/deepseek-ai/deepseek-harness/pulls) shows restricted creation and 0/0; REST pull lists return 404. Historical PR visibility cannot be exhaustively inferred. Original Discussion #8736 is a plugin Discussion, **not PR #8736**. Review the live original [Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions) as the actual community route.
 
-**Track A (existing):** [Goal service](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/README.md) stores a revision-checked objective; [round driver](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal-round-driver/README.md) continues work. [Ralph](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/tool-ralph/README.md) returns self-declared statuses. [Auto Review](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/auto-review/README.md) decides before a tool call, not after a worker's outcome. Existing [Cordis profiles](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/docs/architecture.md) already support user-selected plugins. The [original contributor policy](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/CONTRIBUTING.md) explicitly declines external PRs for now; targeted original issue search found no matching request, and original full PR-list API returned 404 (PR inventory **UNKNOWN**, not empty).
+## Track B — smallest on-top constructor
 
-**Track B (considered):** optional independent evaluator consumes goal and artifact/test evidence from outside the worker report; distinct actor selects certify/reject/hold; an authorised result protects completion and influences later Goal rounds; a durable outcome is read back. In [current source](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts), GoalService.complete mutates the goal before emitting a changed event, so a passive event listener is not the required enforcement. A real new first-party pre-commit gate has **not** been justified over a separate plugin or ordinary task tests.
+Compose **S3* via an optional first-party seam plus external policy actor**, rather than duplicating GoalService:
 
-**Distinctness / falsifier:** reproduce an actual false goal completion, then show that deterministic tests, human verification and a non-core plugin cannot achieve the same authorised correction, while the smallest first-party native addition does. Without this, more code adds cost rather than a demonstrated S3* function. The proposed scenario is **HYPOTHETICAL**.
+1. GoalService exposes a typed registration/unregistration of protected `complete` guards, checks before `agent.session.append('goal/change', ...)`, and respects goal id/revision and parent-owned scope.
+2. An opt-in independent reviewer receives independently captured artifact/test evidence and existing goal objective/revision, issues `allow / deny / hold` or a narrowly typed permit, and persists an attributable audit. Without a configured reviewer, existing Goal behavior remains unchanged; in an explicitly enforced mode, missing reviewer/evidence must not silently certify success.
+3. `deny/hold` keeps the original active state, produces a visible tool/service failure and auditable reason, and permits a later *authorised* correction round; `allow` commits with a verifiable permit reference. No actor can override parent pause/policy.
+4. The verified source of decision is not the agent's own completion narrative. A passive event hook or an LLM warning without veto is **not** S3*=C.
 
-## P0 / P1 / P2 and test boundary
+This is **GO + NEEDS_EVIDENCE at proposal stage**, not proof of a completed S3* actor. The smallest native delta may be just an API seam; evaluator, policy, evidence storage and correction behavior remain opt-in composed components.
 
-**P0:** NO_QUALIFIED_C_TARGET — no new first-party constructor selected. **P1:** conditionally collect one falsifiable real failure and cheaper-route comparator, identify lawful authority and exact missing native seam. **P2:** NONE. Architectural sufficiency of a new complete C constructor is **NOT ESTABLISHED**, no developer interest or user demand is invented.
+## P0 / P1 / P2 and falsifiers
 
-Proposed positive witness: false worker success rejected by independent artifact evidence and an authorised later correction; true success certified. Negative witnesses: stale revision, absent reviewer, worker-only evidence, blocked parent action, forbidden policy change and default-mode compatibility. This is a future experiment, not a reported test pass. **Validation: NOT_RUN; benefit/cost: NOT_MEASURED.**
+- **P0:** prototype the bounded native `GoalTransitionGuard`/permit attribution interface against **current original pinned source**, then measure it against the unchanged source plus existing vendored plugin. **Do not publish or implement in the original repository by default.**
+- **P1:** positive: bogus worker `complete` with failing independent test is denied **before append**, Goal remains active, later authorised round can fix it; correct completion is certified with independent evidence; cancellation/parent pause/stale revision/reviewer failure fail closed only in enforce mode. Test plugin disabled/advisory for exact backwards compatibility.
+- **P2:** NONE. Only consider wider first-party integration after cheaper alternatives are ruled out.
 
-## Publication and historical comparison
+**Positive falsifier / stop:** a standard non-core plugin on unmodified original HEAD can already prevent all relevant direct goal-completion paths, or tests/human acceptance yield equal verified outcomes at lower cost, or additional native ownership violates source policy. Conversely, a user report alone does not prove implementation correctness. **Native tests: NOT_RUN; costs: NOT_MEASURED.**
 
-The earlier [pre-rerun case](https://github.com/opensiro-contributions/deepseek-harness/blob/37cbf1f044059dfca9e61d0f7c2c8f0ef5222851/.opensiro/issues/independent-goal-verification-20261119/roadmap.md) also selected NO_GO. It was consulted **after** the fresh six-function/Track A/B decision and remains historical provenance, not the basis of this verdict. The owner's subsequent ACTIVE/ALLOW state authorises these internal case documents, not a public fork Issue or external-original interaction.
+## Historical attribution and publication
 
-**DRAFT — NOT PUBLISHED.** This issue.md is a proposed public working-fork Issue body, not a GitHub Issue. No original Issue, Discussion, PR or comment has been sent; no product change, new Index grade or verified return to an actual user task is claimed. AI-assisted source research; no independent human experiment reported.
+This is an **evidence-driven amendment**, **not another isolated first-attempt rerun**. The original v0.18 source-first [previous reconciled decision](https://github.com/opensiro-contributions/deepseek-harness/blob/39bc69e4149528ab89deb60a6ed03f81739b0178/.opensiro/issues/independent-goal-verification-20261119/roadmap.md) concluded NO_GO/NO_USEFUL_CHANGE before finding the actual user Discussion and independent vendor-patch evidence; its revision is now retained in Git ancestry. The historical Index vector is unchanged. No maintainer acceptance is claimed.
+
+**DRAFT — NOT PUBLISHED.** No original Issue/Discussion/PR/comment, public fork Issue, original product change or index regrade was made. Original contributor policy presently declines external PRs; public contact and external fork proposals require exact current-conversation approval.
