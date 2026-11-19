@@ -1,61 +1,67 @@
-# DeepSeek Harness — S3* independent goal-completion audit: AI/developer construction sufficiency
+# DeepSeek Harness — technical S3* C-constructor sufficiency review
 
-**PLAN_ONLY / NO_USEFUL_CHANGE — final operator decision: NO_GO.**
+**Target transition:** NO_QUALIFIED_C_TARGET
+**Proposal-stage decision:** NO_GO
+**Research disposition:** NO_USEFUL_CHANGE
 
-**Human decision / public fork Issue draft:** [issue.md](https://github.com/opensiro-contributions/deepseek-harness/blob/opensiro/meta/.opensiro/issues/independent-goal-verification-20261119/issue.md). **Receipt:** [roadmap.md](https://github.com/opensiro-contributions/deepseek-harness/blob/opensiro/meta/.opensiro/issues/independent-goal-verification-20261119/roadmap.md).
+**Human decision:** [issue.md](issue.md). **Canonical technical/status receipt:** [roadmap.md](roadmap.md). This AI contract is a proposal-stage source-evidence analysis, not a new Index assessment or native implementation.
 
-## Baseline and source pins
+## 1. Boundary and actual function-specific source
 
-Original `deepseek-ai/deepseek-harness`, current master `2e39e70496aa02986ca6a820c5d497e816b69d7e` (2026-11-19); verified corresponding fork `opensiro-contributions/deepseek-harness` master `fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159` (2026-11-04; behind current original). Index main `34e11ec4dd52e1ba3ee0111d8bca73f13918f54f`, included assessment blob `257a55619d474d8a86a49de6dffa93a4426d7b62`, review_ref `ddefc45fbc7f8e46dd73185e68295696d1297887`, reviewed 2026-09-18, Profile 0.2.2 / Methodology 0.3.1. [Historical assessment](https://github.com/opensiro/vsm-harness-index/blob/34e11ec4dd52e1ba3ee0111d8bca73f13918f54f/assessments/de/deepseek-harness.md).
+Original source: https://github.com/deepseek-ai/deepseek-harness/commit/2e39e70496aa02986ca6a820c5d497e816b69d7e. Historical included Index assessment, review ref, accepted vector and six-function outcomes are exclusively pinned in [roadmap.md](roadmap.md). One supported harness organization includes its Agent/Session and opt-in Team, Goal, experimental Ralph/Auto Review; not external maintainers, user policy or a reviewer outside its composed runtime.
 
-**Complete historical state:** S1=A; S2=A; S3=A(P); S3*=—; S4=—; S5=—. This is *not* the current HEAD's reassessment. Assessment age 62 days warrants advisory Index reassessment, with no fabricated acceptance.
+- S1 existing closure: [AgentLoop](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/core/agent-loop/README.md) binds model tool action and subsequent Session feedback.
+- S2 existing closure: [Teams](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/team/agent-team/README.md) regulate mutual work via board, dependencies, CAS and messages.
+- S3 existing closure: Team Lead and authorised parent Task Board manage assignments and current commitments.
+- S3* candidate: independent review after a claimed Goal/Ralph completion; current Goal and Ralph own self-declared terminal status only.
+- S4 negative: no evidenced specific future-environment adaptation need; plugin availability is not an autonomous future-return actor.
+- S5 negative: user and deployment control remain legitimate parent/governance boundaries, not automatically installable local policy.
 
-System boundary: original first-party agent/Session and published opt-in goal, Ralph and Team modes at one declared harness organization. Independently authored external plugins are options, not automatically first-party C ownership.
+**Function witness only if later substantiated:** independent actor reads evidence from a different channel than worker summary, uses legitimate certify/reject/hold alternatives, enforces any certified label and returns information that changes later authorised work. A mere audit message or code review UI does not establish it.
 
-## Current first-party source-to-decision map
+## 2. Track A — source-native mechanisms and cheapest alternative
 
-| VSM function / candidate | Shipped first-party primitive | Current decisive owner and feedback | Candidate / disposition |
+| Native surface | What it actually enforces | What it does not prove |
+| --- | --- | --- |
+| [Goal service](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts) | GoalRef CAS, persisted goal/change, complete/block state transitions, goal/changed notice | Independent reviewer consent before completion |
+| [Goal tools](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/tool-goal/src/index.ts) | Model update_goal routes complete/blocked to Goal service under existing tool authority | Evidence-independent verifier judgment |
+| [Goal-round driver](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal-round-driver/src/index.ts) | Bounded continuation, cancellation, stale reservation checks and source feedback | Review/certification of goal completion |
+| [Ralph](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/tool-ralph/README.md) | Fresh child rounds, structured self-report and cap | Outcome evidence not chosen by the worker |
+| [Auto Review](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/auto-review/README.md) | Separate model review of pending tool effects before execution | Post-result independent validation |
+| [Cordis composition](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/docs/architecture.md) | User-selected services/events/plugins and profile overlays | Permission to mutate goal as a separate bounded S3* owner |
+
+The source-visible GoalService.complete() appends goal/change and then emits goal/changed (same [source](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts)). The model-facing [tool code](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/tool-goal/src/index.ts) calls complete directly after completionAuthority permits goal-round completion. Therefore a passive subscriber to goal/changed cannot reliably reject the worker's false success **before it becomes durable**. Revision guards alone do not certify factual task success; an authorised plugin or parent can already use task-specific tests without another core component.
+
+Original PR inventory: targeted search returned no matching first-party evaluator, but the direct original open PR list returned HTTP 404, so comprehensive overlap status remains **UNKNOWN**. Original [CONTRIBUTING](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/CONTRIBUTING.md) currently rejects external PR submissions. No maintainer feature mandate is inferred.
+
+## 3. Independent Track B alternatives and C sufficiency
+
+| Option | Mechanism and actual owner | Return-to-operation question | Evaluation |
 | --- | --- | --- | --- |
-| S1=A | [Agent-loop Session history](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/docs/architecture.md) | Model selects actions; committed results return in later model turns | Already owned; no C-target |
-| S2=A | [Agent Teams](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/agent-team/README.md) | Teammates and Lead share task/message coordination | Already owned; no C-target |
-| S3=A(P) | [Team Lead / parent task board](https://github.com/opensiro/vsm-harness-index/blob/34e11ec4dd52e1ba3ee0111d8bca73f13918f54f/assessments/de/deepseek-harness.md) | Current resource/commitment regulation, historical positive modes | No C-target on grade alone |
-| S3*=— | [Ralph](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/tool-ralph/README.md), [Goal](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/README.md), [Goal-round driver](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal-round-driver/README.md) | Worker/goal caller still declares completion; independent certification explicitly deferred | **NO_GO**: residual operator benefit not evidenced |
-| S4=— | Existing tools and plugins | No independently evidenced external-future decision/feedback integration | Not targeted |
-| S5=— | Permissions and parent choices | Existing legitimate user/deployment owner; no ultimate-policy actor verified | Not targeted |
+| A0 task tests / parent accept | Explicit deterministic test command or human checks the artifact after worker reports | Parent/user can decide whether to continue; not an in-runtime C actor | Lowest integration cost; no demonstrated failure |
+| A1 opt-in out-of-tree plugin | Separate Cordis reviewer reads independent evidence, publishes its own verdict; parent owns any task correction | Can it legally prevent inaccurate certification or merely add a warning? | Preferred experiment if a real case appears; source hooks exist, enforcement remains unproven |
+| B1 smallest new first-party S3* port | Define completion/certification interface only if non-core path cannot achieve a required protected decision; evaluator composed from developer policy, evidence and owner | Guard completion before durable success, reject stale/parent-forbidden decisions, append return evidence, influence next authorised goal round | Coherent hypothesis, but **not qualified or implemented** |
+| B2 standalone controller | Duplicate Goal store and policy authority to control worker completion | Changes parent policy and competition with native state | Overbuilt, no independent justification |
 
-[Auto review](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/experimental/auto-review/README.md) is a separate pre-action tool-policy model path, not post-result independent audit. [Cordis plugin and event architecture](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/docs/architecture.md) is the smallest native integration seam. The descriptions expressly say the deferred evaluator is not a task backlog.
+For B1 a **complete hypothetical constructor** requires: (a) independent provenance of objective/worker claim and external artifact/test evidence, (b) separately selected reviewer with explicit lawful authority to certify/hold/reject, (c) a protected point that prevents falsely claiming certified completion or provides distinct status without rewriting the worker's result, (d) durable audit record tied to exact Goal id/revision and review evidence, and (e) authorised later goal work or escalation with observable return. An exposed hook with no independent decision owner or one-way warning is **insufficient**. These are logical obligations; the number of physical native APIs is not prescribed. Existing native code could cover all but one edge, if a real counterexample proved it.
 
-Original Issues: API returned an empty open-issues listing, targeted evaluator issue search had no hits. PR search had no relevant results, but original REST pulls-list returned HTTP 404: **complete competing PR inventory NOT VERIFIED**; no negative proof from absent result. A separate plugin can be independently implemented outside the original; no approved original contribution path is presumed.
+**Counterfactual owner test:** remove the reviewer but keep Goal service, checks, CAS and events. Worker completion and task tests still work; no independent model audit actor makes a decision *inside the harness*. But absence of that C function alone is not evidence the user needs a first-party implementation. External test/human/sidecar alternatives must first be shown insufficient for the exact task.
 
-## Hypothetical full C-construction path (not approved)
+**Reason for current NO_GO:** actual task failure and distinct positive user result have not been demonstrated; the original documents deliberate evaluator deferral; full original-native PR-list coverage was unavailable; a protected completion port's lawful owner and effect have not been proven necessary. This is not a blanket judgment that independent verification is useless, and a source-backed intentional omission of all future auditing is **not** claimed.
 
-1. **Observed disturbance**: one bounded goal/Ralph task reports `complete` while a defined external test/artifact check shows the task is not complete. No confirmed real-world reproduction in this review.
-2. **First-party audit input** (not shipped as a distinct S3* contract): immutable task objective, proof artifacts, workspace/test evidence, worker claim, lineage and independent reviewer policy.
-3. **Developer-composed decision actor**: separate evaluator, with access to evidence independent of the worker's report, legitimately authorized to return `certified`, `reject/continue` or `uncertain/hold`.
-4. **Authority and enforcement**: only a certified result may be labelled independently verified; reject cannot silently rewrite original worker report; goal owner handles continuation/pausing with bounded rounds and proper permissions. Reviewer cannot grant itself S5 or override human pause.
-5. **Durability/feedback**: append auditable evaluator verdict referencing original claim and evidence; ensure lawful next goal round or human escalation and returned observable result. No such complete first-party constructor has been shown.
-6. **Distribution reachability**: an opt-in profile/plugin may be less intrusive than changes to AgentLoop/Ralph; whether an existing extension already suffices needs an end-to-end paired user test before first-party API design.
+## 4. Falsifiable future validation, and decision boundaries
 
-**Constructor sufficiency verdict: NOT ESTABLISHED.** Shipped plugin hooks alone do not prove a real independently composed S3* decision/feedback closure; proposed design is not code, C-grade, or policy.
+Native commands advertised in original [AGENTS.md](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/AGENTS.md): pnpm run test, pnpm run typecheck, pnpm run build; actual supported developer workflow requires installed dependencies and model credentials for real-API tests. **None run** in this plan-only review. Proposed disposable fixtures/test cases:
 
-## Falsifiable native acceptance / negative cases (proposed, not executed)
+1. Worker reports complete on a task with an externally failing acceptance artifact; reviewer cannot certify and a properly authorised next round receives a corrective input.
+2. Worker reports complete when independent artifact/test passes; distinct reviewer is permitted to certify, and the decision is recorded separately.
+3. Reviewer is missing, unavailable, shares only worker-provided evidence, or has stale Goal id/revision; no invented independent certification or unauthorised goal mutation occurs.
+4. Parent/user pauses or revokes right: reviewer cannot override control; attempt fails closed with an attributable result.
+5. Reviewer disabled: ordinary Goal and Ralph modes continue with accurately labelled self-reported completion.
+6. Matched cost/outcome comparison vs deterministic tests, human review and A1 plugin; if either matches correction with less implementation/maintenance burden, stop first-party B1.
 
-| Case | Input/condition | Required observable result if a new feature is later justified | Fails if |
-| --- | --- | --- | --- |
-| AC-01 positive audit correction | Real goal incorrectly claims complete; external test fails; independent evaluator receives external evidence | Reject claim; no false certification; lawful next operation receives correction and alters subsequent outcome | Reviewer only repeats worker report or cannot affect later operation |
-| AC-02 different lawful choice | Same objective, test passes, independent reviewer returns certify, or `hold` if unreviewable | Distinct authorized certification/hold, preserved as separate fact | Outcome hardcoded regardless of evaluator |
-| AC-03 missing actor | No independent reviewer plugin selected | Ordinary native result stays **uncertified**, with no invented audit decision | Generic plugin seam is counted as C |
-| AC-04 invalid authority | Reviewer tries unauthorized goal policy change or override of parent pause | Denied and observable; no new S5 rights | A review verdict directly mutates reserved policy |
-| AC-05 independence/staleness | Only worker self-report, stale artifact, untrusted evidence | Explicit uncertainty/reject; never certify by circular evidence | Reviewer and worker share sole evidence channel |
-| AC-06 compatibility | Evaluator disabled | Native Ralph, Goal and session history remain compatible and correctly describe self-report | Breaks default mode or claims audit when absent |
+**Positive result needed for reconsideration:** real false-success reproducer, unmatched verified outcome through B1, actual independent actor/authority/feedback closure, and tests showing A0/A1 insufficient. **Negative falsifier:** simple tests or supported external plugin produce the same effect, or required first-party hook cannot be made lawful. No real false-success run, benchmark, cost estimate or test result was produced.
 
-## Priority / decision
+## 5. Decision and post-verdict historical comparison
 
-- **P0 proposed then rejected now**: evaluator-backed independent certification with feedback. No reproducible demand and no established benefit over simpler native/plugin/test alternative.
-- **P1 conditional only**: if reproduced, map existing plugin hooks and native authority; add smallest missing event/receipt/steering port only if necessary. Not scheduled.
-- **P2**: no independent useful extra.
-- **Final operator decision: NO_GO.** No first-party implementation, no external original issue/PR, no grade update, no S4/S5 invention. Use actual tests and an independent outcome as a fresh gate for reconsideration.
-- **Legal/publication**: MIT; [CONTRIBUTING.md](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/CONTRIBUTING.md) currently declines external PRs; fork Issue remains DRAFT — NOT PUBLISHED pending separate exact approval.
-- **Cost status**: NOT_MEASURED. Paired native-vs-proposed task/quality/effort results absent. No native tests were run for this plan.
-
-Prepared with AI assistance; no claim of original maintainer endorsement.
+Canonical P0 remains NO_QUALIFIED_C_TARGET; conditional P1 evidence and simpler option comparator; P2 NONE. Source-first independent decision: scoped **NO_GO / NO_USEFUL_CHANGE**. The old [pre-rerun case](https://github.com/opensiro-contributions/deepseek-harness/blob/37cbf1f044059dfca9e61d0f7c2c8f0ef5222851/.opensiro/issues/independent-goal-verification-20261119/roadmap.md) was read only after this result and agreed on NO_GO; the new technical observation adds the current direct-complete/post-notice authority limitation. No Index regrade, external Issue or PR, fork public Issue or product implementation. Upstream [#58](https://github.com/opensiro/upstream/issues/58) owner state ACTIVE/ALLOW permits only this internal case update. AI-assisted, no independent human test.
