@@ -28,3 +28,5 @@ The [original contributor policy](https://github.com/deepseek-ai/deepseek-harnes
 ### 2026-11-20 · v0.18.1 same-case source-native PATCH_REVIEW
 
 Preserves the 2026-11-19 independent case and `GO / NEEDS_EVIDENCE` proposal outcome while narrowing the optional S3* hypothesis to the actual synchronous [GoalService.complete](https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts) → durable `goal/change` seam, with direct-service/tool bypass and replay/parent tests. [Human](issue.md) · [AI](constructor-sufficiency.md) · [canonical receipt](roadmap.md). Original remains `master@2e39e70496aa02986ca6a820c5d497e816b69d7e`. Implementation/test/cost NOT_RUN/NOT_MEASURED; no third-party or public fork publication; no new Upstream status-only PR.
+
+**Canonical case links:** [issue.md](issue.md) · [constructor-sufficiency.md](constructor-sufficiency.md) · [roadmap.md](roadmap.md).

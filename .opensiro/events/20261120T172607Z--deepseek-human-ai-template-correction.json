@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "20261120T172607Z--deepseek-human-ai-template-correction",
+  "recorded_at": "2026-11-20T17:26:07.354Z",
+  "actor": "ChatGPT GitHub connector",
+  "kind": "CORRECTION",
+  "case_id": "independent-goal-verification-20261119",
+  "original_repository": "deepseek-ai/deepseek-harness",
+  "correction_of": "20261120T171051Z--deepseek-v0181-native-specific-review",
+  "decision": "GO / NEEDS_EVIDENCE (UNCHANGED)",
+  "description": "Replace cumulative technical appendices with exact current Upstream Human 8-section and AI 6-section templates, preserving canonical roadmap status and source pins",
+  "validation": [
+    "validate_capability_roadmap.py PASS (local prewrite)",
+    "validate_roadmap_publication.py PASS (local prewrite)"
+  ],
+  "evidence_urls": [
+    "https://github.com/opensiro/upstream/blob/main/templates/FORK_CAPABILITY_ROADMAP_ISSUE.md",
+    "https://github.com/opensiro/upstream/blob/main/templates/ROADMAP_AI_CONSTRUCTOR_CONTRACT.md",
+    "https://github.com/opensiro/upstream/issues/58#issuecomment-7045791726"
+  ],
+  "external_publication": "NOT_PUBLISHED",
+  "native_tests": "NOT_RUN",
+  "next_action": "Maintain Human and AI template structure at each case revision; check exact committed case with both validators"
+}
