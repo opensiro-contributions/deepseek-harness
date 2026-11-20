@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "20261120T171051Z--deepseek-v0181-native-specific-review",
+  "recorded_at": "2026-11-20T17:10:51.034Z",
+  "actor": "ChatGPT GitHub connector",
+  "kind": "RESEARCH",
+  "case_id": "independent-goal-verification-20261119",
+  "original_repository": "deepseek-ai/deepseek-harness",
+  "decision": "GO / NEEDS_EVIDENCE (UNCHANGED; v0.18.1 same-case native-specific PATCH_REVIEW)",
+  "evidence_urls": [
+    "https://github.com/opensiro/upstream/issues/58#issuecomment-7045628521",
+    "https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/goal/src/index.ts",
+    "https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/packages/goal/tool-goal/src/index.ts",
+    "https://github.com/deepseek-ai/deepseek-harness/blob/2e39e70496aa02986ca6a820c5d497e816b69d7e/docs/subsystems/goal.md"
+  ],
+  "next_action": "If separately authorized, run exact source-pinned native tests and A0/A1 comparators; do not publish original PR/Discussion without current-conversation approval",
+  "native_tests": "NOT_RUN",
+  "original_publication": "NOT_PUBLISHED"
+}
